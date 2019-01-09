@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import Counter from './demos/0201'
+import CounterApp from './demos/0202'
 
 class App extends Component {
   render () {
     return (
       <div className='App box'>
-        <Counter></Counter>
+        <CounterApp />
       </div>
     )
   }
