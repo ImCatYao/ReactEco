@@ -1,21 +1,19 @@
 import * as actionTypes from './actionTypes'
 
-export const addOne = (payload = null) => {
+export function addOne() {
   return {
     type: actionTypes.ADD_ONE,
-    payload
+    payload: {
+      desc: 'add one'
+    }
   }
 }
 
-export const minusOne = (payload = null) => {
+export function minusOne () {
   return {
     type: actionTypes.MINUS_ONE,
-    payload
-  }
-}
-
-export const reset = (payload = null) => {
-  return {
-    type: actionTypes.RESET
+    payload: {
+      desc: 'minus one'
+    }
   }
 }

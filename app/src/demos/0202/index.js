@@ -1,14 +1,54 @@
 import React, { Component } from 'react'
-import { Provider } from 'react-redux'
-import { store } from './store'
-import Counter from './Counter'
+import { store, unsubscribe } from './store'
+import * as actions from './actions'
 
-export default class CounterApp extends Component {
+export default class Counter extends Component {
+  state = {
+    value: 0
+  }
+
+  addOne = () => {
+    store.dispatch(actions.addOne())
+    const { value } = store.getState()
+    this.setState(prevState => {
+      return {
+        value
+      }
+    })
+  }
+
+  minusOne = () => {
+    store.dispatch(actions.minusOne())
+    const { value } = store.getState()
+    this.setState(prevState => {
+      return {
+        value
+      }
+    })
+  }
+
+  unsubscribe = () => {
+    unsubscribe()
+  }
+
   render() {
+    const value = this.state.value
     return (
-      <Provider store={store}>
-        <Counter />
-      </Provider>
+      <div className='Counter'>
+        <div className="content">
+          <div className="app-desc">
+            <h2 className="title">Redux Counter Demo</h2>
+          </div>
+          <div className="main">
+            <h1 className="value"> {value} </h1>
+            <div className="button-group">
+              <button className="button is-small" onClick={this.addOne}><strong>Add 1</strong></button>
+              <button className="button is-small" onClick={this.minusOne}><strong>Minus 1</strong></button>
+            </div>
+            <button className="button btn-unsubscribe" onClick={this.unsubscribe}><strong>Unsubscribe</strong></button>
+          </div>
+        </div>
+      </div>
     )
   }
 }
