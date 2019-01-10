@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import CounterApp from './demos/0204'
+import CounterApp from './demos/0205'
 
 class App extends Component {
   render () {
