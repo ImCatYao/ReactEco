@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import CounterApp from './demos/0205'
+import CombineReducerApp from './demos/0206'
 
 class App extends Component {
   render () {
     return (
-      <div className='App box'>
-        <CounterApp />
+      <div className='App'>
+        <CombineReducerApp />
       </div>
     )
   }
