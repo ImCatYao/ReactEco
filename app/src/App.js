@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import RematchCounterDemo from './demos/0208'
+import Demo from './demos/0109'
 
 class App extends Component {
   render () {
     return (
       <div className='App'>
-        <RematchCounterDemo />
+        <Demo></Demo>
       </div>
     )
   }
