@@ -5,8 +5,10 @@ import FormCheckboxField from './FormCheckboxField'
 
 import './Form.scss'
 
-Form.FormInputField = FormInputField
-Form.FormSelectField = FormSelectField
-Form.FormCheckboxField = FormCheckboxField
+export {
+  FormInputField,
+  FormSelectField,
+  FormCheckboxField
+}
 
 export default Form
