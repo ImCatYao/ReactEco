@@ -8,7 +8,7 @@ export default class Counter extends Component {
   addOne = () => {
     this.setState(prevState => {
       return {
-        value: prevState.value - 1
+        value: prevState.value + 1
       }
     })
   }
@@ -16,7 +16,7 @@ export default class Counter extends Component {
   minusOne = () => {
     this.setState(prevState => {
       return {
-        value: prevState.value  + 1
+        value: prevState.value  - 1
       }
     })
   }
@@ -24,16 +24,16 @@ export default class Counter extends Component {
   render() {
     const value = this.state.value
     return (
-      <div className='Counter'>
+      <div className='Counter box' style={{'max-width':'420px', 'margin': '0 auto', 'text-align': 'center'}}>
         <div className="content">
           <div className="app-desc">
-            <h2 className="title">Redux Counter Demo: <small>withou redux</small></h2>
+            <h2 className="title">Counter Demo: <small>without redux</small></h2>
           </div>
           <div className="main">
             <h1 className="value"> {value} </h1>
             <div className="button-group">
-              <button className="button is-small" onClick={this.addOne}><strong>Add 1</strong></button>
-              <button className="button is-small" onClick={this.minusOne}><strong>Minus 1</strong></button>
+              <button className="button is-small" onClick={this.addOne}><strong>Add One</strong></button>
+              <button className="button is-small" onClick={this.minusOne}><strong>Minus One</strong></button>
             </div>
           </div>
         </div>
