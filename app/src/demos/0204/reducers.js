@@ -8,18 +8,8 @@ export default function reducers(state, { type, payload = {} }) {
         isFetching: true
       }
     case actionTypes.SET_POSTS:
-      return {
-        ...state,
-        posts: payload,
-        error: null,
-        isFetching: false,
-      }
     case actionTypes.SET_ERROR:
-      return {
-        ...state,
-        error: payload,
-        isFetching: false
-      }
+      return {...payload}
     default: 
       return state
   }

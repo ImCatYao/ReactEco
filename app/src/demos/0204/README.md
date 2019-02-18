@@ -44,8 +44,8 @@ componentDidMount() {
     type: actionTypes.SHOW_LOADING
   })
 
-  store.dispatch(actions.fetchPosts()).then((data) => {
-    store.dispatch(data)
+  store.dispatch(actions.fetchPosts()).then((action) => {
+    store.dispatch(action)
     this.setState(store.getState())
   })
 }

@@ -6,12 +6,21 @@ export const fetchPosts = () => {
     .then(({data}) => {
       return {
         type: actionTypes.SET_POSTS,
-        payload: data
+        payload: {
+          posts: data,
+          error: null,
+          isFetching: false
+        }
       }
     }).catch(e => {
+      const { message } = e
       return {
         type: actionTypes.SET_ERROR,
-        payload: e
+        payload: {
+          posts: null,
+          error: message,
+          isFetching: false
+        }
       }
     })
 }
