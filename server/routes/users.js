@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+import { Router } from 'express'
+
+import { renderToString } from 'react-dom/server'
+import React from 'react'
+import Layout from '../components/Layout'
+
+const router = Router()
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+  const jsx = (<Layout />)
+  const html = renderToString(jsx)
+  res.send(html)
+})
 
-module.exports = router;
+
+export default router
