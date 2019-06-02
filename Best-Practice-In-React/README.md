@@ -36,3 +36,14 @@ We pass `props` from Parent Component to Child Component to share data among Chi
 **Summary**:
 
 ![React Design philosophy](./imgs/01.React-Design-Philosophy.png).
+
+## Practice in building React Component
+
+### How to build a React Component with clear APIs
+
+**High cohesion, low coupling** is a principle for design a software system, so is component design in React. In detail, for designing a React component, the principles are:
+
+- Keep `props` small(Keep API small)
+- Make full usage of composition and Divide component by data boundaries
+- Extract state to upper components, implement lower component as a pure function.
+
