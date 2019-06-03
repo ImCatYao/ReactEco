@@ -132,7 +132,7 @@ export default MajorClock;
 
 #### 1). Basic concepts of HOC
 
-HOC solves a problem where a business logical occurs repeatedly and can't be extracted into a single component neither.
+HOC solves a problem where a business logical repeatedly occurs and can't be extracted into a single component either.
 
 **Name convention for HOC: using `with` as prefix**.
 
@@ -156,7 +156,7 @@ const withSayingHi = (Component, ...others) => {
 
 - Pure function
 - Return a Component
-- In common, HOC shoudl pass its `props` to the returned component in HOC.
+- In common, HOC should pass its `props` to the returned component in HOC.
 
 - Another HOC example:
 
@@ -226,6 +226,43 @@ const ShoppingCart = withLogin(() => {
 
 - Pass multiple params to HOC
 - HOC Chaining.
+
+### 2. Render `props` (function as child)
+
+*Render `props`* pattern expects children property is a function.
+
+```javascript
+const RenderAll = (props) => {
+  return (
+    <React.Fragment>
+      {props.children(props)}
+    </React.Fragment>  
+  )
+}
+```
+
+**Extention**: Any `props` can work as a function
+
+```javascript
+const Auth= (props) => {
+  const userName = getUserName();
+
+  if (userName) {
+    const allProps = {userName, ...props};
+    return (
+      <React.Fragment>
+        {props.login(allProps)}
+      </React.Fragment>
+    );
+  } else {
+    <React.Fragment>
+      {props.nologin(props)}
+    </React.Fragment>
+  }
+};
+```
+
+In fact, `render props` is a Dependency Injection to React.
 
 ## Readings
 
