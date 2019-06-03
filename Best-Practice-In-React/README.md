@@ -91,13 +91,141 @@ class ControlButtons extends React.Component {
 }
 ```
 
+- Use uniform prefix for `props`
+
+```javascript
+// function
+
+onClick = () => {
+  // do something
+}
+```
+
+- Extract code that is  irrelevant to JSX code into a function
+
+```javascript
+import  React from 'react';
+// ms2Time is a non-related code to JSX
+import { ms2Time } from './utils';
+
+const MajorClock = ({ milliseconds }) => {
+  const timeValue = ms2Time(milliseconds);
+  return (
+    <div className="MajorClock">
+      <h1>{timeValue}</h1>
+    </div>
+  )
+}
+
+export default MajorClock;
+```
+
 ### (3): style in React
 
 - Bind style property to dom element in JSX
 - Import style file in React definition file
 - Add styled-jsx support
 
-Don't Repeat yourself: **DRY**.
+## Part Three: Component Pattern
+
+### 1. High Order Component
+
+#### 1). Basic concepts of HOC
+
+HOC solves a problem where a business logical occurs repeatedly and can't be extracted into a single component neither.
+
+**Name convention for HOC: using `with` as prefix**.
+
+- A HOC example:
+
+```javascript
+const withSayingHi = (Component, ...others) => {
+  const NewComponent = (props) => {
+    return (
+      <div className="WithSayingHi">
+        <h3 className="tit">Hi!</h3>
+        <Component {...props} />;
+      </div>
+    )
+  };
+  return NewComponent;
+};
+```
+
+- Features of HOC:
+
+- Pure function
+- Return a Component
+- In common, HOC shoudl pass its `props` to the returned component in HOC.
+
+- Another HOC example:
+
+Component1:
+
+```javascript
+const LogoutButton = () => {
+  if (getUserId()) {
+    return ...; // 显示”退出登录“的JSX
+  } else {
+    return null;
+  }
+};
+```
+
+Component2:
+
+```javascript
+const ShoppintCart = () => {
+  if (getUserId()) {
+    return ...; // show cart
+  } else {
+    return null;
+  }
+};
+```
+
+For both `Component1` and `Component2`, there is a repeated code segment:
+
+```javascript
+if (getUserId()) {
+  return ...; // show logout button
+} else {
+  return null;
+}
+```
+
+which can be extracted as a HOC, `withLogin`:
+
+```javascript
+const withLogin = (Component) => {
+  const NewComponent = (props) => {
+    if (getUserId()) {
+      return <Component {...props} />;
+    } else {
+      return null;
+    }
+  }
+
+  return NewComponent;
+};
+```
+
+By `withLogin`,
+
+```javascript
+const LogoutButton = withLogin((props) => {
+  return ...; // show logout button
+});
+
+const ShoppingCart = withLogin(() => {
+  return ...; // show cart
+});
+```
+
+#### 2). Advanced usage of HOC
+
+- Pass multiple params to HOC
+- HOC Chaining.
 
 ## Readings
 
