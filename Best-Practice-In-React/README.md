@@ -264,6 +264,15 @@ const Auth= (props) => {
 
 In fact, `render props` is a Dependency Injection to React.
 
+### 3. Provider Pattern
+
+`Provider Pattern` is a solution to avoid multiple level `props` passing. There are two roles in `Provider Pattern` which are
+
+- Provider
+- Customer
+
+`React-Redux` is a React Redux lib based on `Provider Pattern`
+
 ## Readings
 
 1. Some principles for software design: [https://coolshell.cn/articles/4535.html](https://coolshell.cn/articles/4535.html)
