@@ -1,5 +1,9 @@
 # Best Practice in React
 
+## Contents
+
+![Contents](./imgs/Contents.png).
+
 ## Part One: Design philosophy of React
 
 Three basic rules in React:
